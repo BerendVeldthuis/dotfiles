@@ -1,0 +1,25 @@
+@define-color color-bg      #1d2021; /* color: 0 */
+@define-color color-bg1     #282828;
+@define-color color-bg2     #282828;
+@define-color color-bg3     #3c3836;
+@define-color color-bg4     #3c3836;
+@define-color color-bg5     #504945;
+
+@define-color color-fg      #d4be98; /* color: 15 */
+@define-color color-fg1     #ddc7a1; /* color: 15 */
+
+@define-color color-red     #ea6962; /* color: 1 */
+@define-color color-green   #a9b665; /* color: 2 */
+@define-color color-yellow  #d8a657; /* color: 3 */
+@define-color color-blue    #7daea3; /* color: 4 */
+@define-color color-purple  #d3869b; /* color: 5 */
+@define-color color-aqua    #89b482; /* color: 6 */
+@define-color color-gray    #7c6f64; /* color: 7 */
+@define-color color-orange  #e78a4e;
+
+@define-color color-red1    #442e2d; /* color: 9 */
+@define-color color-green1  #333e34; /* color: 10 */
+@define-color color-yellow1 #473c29; /* color: 11 */
+@define-color color-blue1   #2e3b3b; /* color: 12 */
+@define-color color-purple1 #3c333b; /* color: 13 */
+@define-color color-gray1   #928374; /* color: 8 */

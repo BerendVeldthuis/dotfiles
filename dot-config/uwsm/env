@@ -1,0 +1,2 @@
+export XDG_MENU_PREFIX=arch- kbuildsycoca6
+QT_QPA_platformtheme=qt6ct

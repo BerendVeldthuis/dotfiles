@@ -1,0 +1,19 @@
+// my config for rofi
+// start command: rofi -show combi
+
+configuration {
+modi: "combi,file-browser-extended";
+      combi-modi: "window,drun";
+      icon-theme: "Gruvbox_dark";
+      show-icons: true;
+      no-history: true;
+      filebrowser {
+        directory: "~";
+        directorys-first: true;
+        cancel-returns-1: true;
+        show-hidden: false;
+        command: "xdg-open";
+      }
+}
+
+@theme "gruvbox-dark-hard.rasi"

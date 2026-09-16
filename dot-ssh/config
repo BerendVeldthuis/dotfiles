@@ -1,0 +1,6 @@
+Host lxc.broodjehamworst.net
+	ProxyCommand /usr/local/bin/cloudflared access ssh --hostname %h
+
+Host github.com
+	User git
+	IdentityFile ~/.ssh/id_ed25519
