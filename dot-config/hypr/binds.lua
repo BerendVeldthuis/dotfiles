@@ -28,6 +28,10 @@ hl.bind("SUPER + J", hl.dsp.focus({ direction = "down" }))
 hl.bind("SUPER + K", hl.dsp.focus({ direction = "up" }))
 hl.bind("SUPER + L", hl.dsp.focus({ direction = "right" }))
 
+hl.bind("SUPER + G", hl.dsp.group.toggle())
+hl.bind("SUPER + M", hl.dsp.group.next())
+hl.bind("SUPER + N", hl.dsp.group.prev())
+
 hl.bind("escape", hl.dsp.submap("reset"), {submap_universal = true, non_consuming = true})
 
 --- moving windows
