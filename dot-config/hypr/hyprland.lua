@@ -42,12 +42,12 @@ local menu        = "rofi"
 hl.on("hyprland.start", function ()
   hl.exec_cmd("systemctl --user start hyprpolkitagent")
   hl.exec_cmd("hyprlock -q -g 0")
-  hl.exec_cmd("waybar & hyprpaper & hypridle & mako & nm-applet & blueman-applet")
+  hl.exec_cmd("waybar & hyprpaper & hypridle & mako & nm-applet")
   hl.exec_cmd("solaar -w hide")
   hl.exec_cmd("wl-paste --type text --watch cliphist store")
   hl.exec_cmd("wl-paste --type image --watch cliphist store")
   hl.exec_cmd("XDG_MENU_PREFIX=arch- kbuildsycoca6")
-  hl.exec_cmd("mount /media/qbyte/smb/")
+  --hl.exec_cmd("mount /media/qbyte/smb/")
   hl.exec_cmd("com.github.wwmm.easyeffects", { workspace = 8})
   hl.exec_cmd("zen-browser", { workspace = "1" })
 end)
@@ -306,6 +306,13 @@ hl.window_rule({
     class = "Wfica",
   },
   scrolling_width = 1.0,
+})
+hl.window_rule({
+  name = "rpncalc col width",
+  match = {
+    title = "RCalc",
+  },
+  scrolling_width = 0.333,
 })
 --- Special workspace ---
 hl.workspace_rule({

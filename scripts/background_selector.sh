@@ -11,6 +11,4 @@ selected_bg=$(echo -e ${(j[\n])backgrounds} | rofi -dmenu)
 cp $selected_bg ~/.config/hypr/wall.png
 
 hyprctl hyprpaper wallpaper "eDP-1, ~/.config/hypr/wall.png, cover"
-hyprctl hyprpaper wallpaper "DP-1, ~/.config/hypr/wall.png, cover"
-hyprctl hyprpaper wallpaper "HDMI-1, ~/.config/hypr/wall.png, cover"
 

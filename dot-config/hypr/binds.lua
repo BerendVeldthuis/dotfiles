@@ -23,10 +23,13 @@ end
 --- Keys ---
 ------------
 --- Navigation and Window management ---
-hl.bind("SUPER + H", hl.dsp.focus({ direction = "left" }))
-hl.bind("SUPER + J", hl.dsp.focus({ direction = "down" }))
-hl.bind("SUPER + K", hl.dsp.focus({ direction = "up" }))
+hl.bind("SUPER + H", hl.dsp.focus({ direction = "left"  }))
+hl.bind("SUPER + J", hl.dsp.focus({ direction = "down"  }))
+hl.bind("SUPER + K", hl.dsp.focus({ direction = "up"    }))
 hl.bind("SUPER + L", hl.dsp.focus({ direction = "right" }))
+
+hl.bind("SUPER + M", hl.dsp.group.next())
+hl.bind("SUPER + N", hl.dsp.group.prev())
 
 hl.bind("escape", hl.dsp.submap("reset"), {submap_universal = true, non_consuming = true})
 
@@ -66,6 +69,9 @@ hl.define_submap("resize", function()
   hl.bind("SUPER + 2", hl.dsp.layout("colresize all 0.5"))
   hl.bind("SUPER + 3", hl.dsp.layout("colresize all 0.333"))
 end)
+
+hl.bind("SUPER + G", hl.dsp.group.toggle())
+hl.bind("SUPER + Q", hl.dsp.layout("center"))
 
 --- General binds ---
 hl.bind("SUPER + T", hl.dsp.exec_cmd("alacritty"))
