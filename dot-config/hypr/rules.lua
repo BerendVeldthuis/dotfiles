@@ -66,17 +66,16 @@ hl.window_rule({
   workspace = "8 silent",
 })
 
---- Steam games ---
 hl.window_rule({
-  name = "Fullscreen games",
+  name = "Fullscreen steam games",
   match = {
     initial_class = "steam_app_\\d+",
     },
   fullscreen = true,
   fullscreen_state = "3",
   monitor = "DP-2",
-  workspace = "1",
 })
+
 hl.window_rule({
   name = "Float steam settings",
   match = {
@@ -87,18 +86,20 @@ hl.window_rule({
 })
 
 hl.window_rule({
+  name = "Steam Games List colum width",
+  match = {
+    class = "steam",
+  },
+  scrolling_width = 0.75,
+  workspace = "7 silent"
+})
+
+hl.window_rule({
   name = "alacratty col size",
   match = {
     class = "Alacritty",
   },
   scrolling_width = 0.41,
-})
-hl.window_rule({
-  name = "Steam Games List colum width",
-  match = {
-    title = "Steam Games List",
-  },
-  scrolling_width = 0.3,
 })
 
 -----------------
@@ -116,7 +117,7 @@ local workspace_init = function(id, name, layout)
   })
 end
 
-workspace_init("7", "tray")
+workspace_init("7", "tray", "scrolling")
 workspace_init("8", "audio")
 
 --- Special workspace ---
