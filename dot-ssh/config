@@ -5,6 +5,8 @@ Host kefka
 	HostName 192.168.0.117
 	User worker
 
-Host github.com
-    User git
-    IdentityFile ~/.ssh/id_ed25519
+Host github
+	HostName github.com
+	User git
+	IdentityFile ~/.ssh/github
+	IdentitiesOnly yes
