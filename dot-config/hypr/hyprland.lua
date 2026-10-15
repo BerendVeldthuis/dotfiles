@@ -38,10 +38,11 @@ hl.on("hyprland.start", function ()
     hl.exec_cmd("wl-paste --type text --watch cliphist store")
     hl.exec_cmd("wl-paste --type image --watch cliphist store")
     hl.exec_cmd("XDG_MENU_PREFIX=arch- kbuildsycoca6")
-    hl.exec_cmd("bash ~/scripts/steam_startup.sh")
     hl.exec_cmd("com.github.wwmm.easyeffects")
     hl.exec_cmd("com.discordapp.Discord")
+    hl.exec_cmd("steam")
     hl.exec_cmd("zen-browser")
+    hl.exec_cmd("mount /media/qbyte/smb")
 end)
 
 -------------------------------
