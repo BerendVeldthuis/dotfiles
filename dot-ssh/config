@@ -6,6 +6,7 @@ Host kefka
 	User worker
 
 Host github
+    AddKeysToAgent yes
 	HostName github.com
 	User git
 	IdentityFile ~/.ssh/github
