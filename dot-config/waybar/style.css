@@ -1,59 +1,48 @@
-/*----------------------*/
-/*--- Gruvbox Colors ---*/
-/*----------------------*/
-@define-color color-bg      #282828;  /* color: 0 */
-@define-color color-bg1     #3c3836;
-@define-color color-bg2     #504945;
-@define-color color-bg3     #665c54;
-@define-color color-bg4     #7c6f64;
+/*-----------*/
+/*- COLOURS -*/
+/*-----------*/
+@define-color background #282828;
+@define-color foreground #ebdbb2;
 
-@define-color color-fg      #ebdbb2;  /* color: 15 */
+@define-color submap-move #d79921;
+@define-color submap-resize #b16286;
+@define-color caps #d65d0e;
 
-@define-color color-red     #cc241d;  /* color: 1 */
-@define-color color-green   #98971a;  /* color: 2 */
-@define-color color-yellow  #d79921;  /* color: 3 */
-@define-color color-blue    #458588;  /* color: 4 */
-@define-color color-purple  #b16286;  /* color: 5 */
-@define-color color-aqua    #689d6a;  /* color: 6 */
-@define-color color-gray    #a89984;  /* color: 7 */
-@define-color color-orange  #d65d0e;
+@define-color workspace-active #98971a;
+@define-color workspace-empty #a89984;
+@define-color workspace-urgent #cc241d;
 
-@define-color color-red1    #fb4934;  /* color: 9 */
-@define-color color-green1  #b8bb25;  /* color: 10 */
-@define-color color-yellow1 #fadb2f;  /* color: 11 */
-@define-color color-blue1   #83a598;  /* color: 12 */
-@define-color color-purple1 #d3869b;  /* color: 13 */
-@define-color color-aqua1   #8ec07c;  /* color: 14 */
-@define-color color-gray1   #928374;  /* color: 8 */
+@define-color pulseaudio #458588;
+@define-color mpris #689d6a;
+@define-color cpu #b16286;
+@define-color perf #d3869b;
+@define-color clock #a89984;
 
-/*---------------------*/
-/*--- Waybar common ---*/
-/*---------------------*/
+
+/*-----------------*/
+/*- WAYBAR COMMON -*/
+/*-----------------*/
 * {
   font-family: "AdwaitaMonoNerdFontPropo", monospace;
-  font-size: 16px;
+  font-size: 14px;
+  min-height: 0;
 }
 
 window#waybar {
   background: none;
-  margin:0.5em;
 }
 
 .module {
-  padding: 0 2px;
-  margin: 0 2px;
-  background: @color-bg;
-  color: @color-fg;
-  border-style: solid;
-  border-width: 2px;
+  margin: 0px;
+  padding: 0 4px;
+  background: @background;
+  color: @foreground;
 }
 
-/* If workspaces is the leftmost module, omit left margin */
 .modules-left > widget:first-child > #workspaces {
   margin-left: 0;
 }
 
-/* If workspaces is the rightmost module, omit right margin */
 .modules-right > widget:last-child > #workspaces {
   margin-right: 0;
 }
@@ -63,94 +52,103 @@ button {
   border-radius: 0;
 }
 
-/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
 button:hover {
   background: inherit;
-  color: @color-blue;
+  /*color: @color-blue; */
   box-shadow: none;
 }
 
 tooltip {
-  background: alpha(@color-bg, 1.0);
-  border: 2px solid @color-bg3;
+  background: alpha(@background, 1.0);
+  border: 2px solid @background;
 }
 
-/*------------------------*/
-/*--- Hyprland modules ---*/
-/*------------------------*/
-#submap {
-  background-color: @color-yellow;
-  border-style: none;
-} 
-
-/*--- Hyprland workspace ---*/
-#workspaces {
-  padding: 0 0.5em;
-  background-color: alpha(@color-bg, 0.6);
-  border-style: none;
+#window {
+    background: none;
 }
 
-#workspaces button {
-  font-weight: bold;
-  padding: 0 0.5em;
+/*-----------*/
+/*- MODULES -*/
+/*-----------*/
+#custom-caps {
+    background: @caps;
 }
-
+#submap.move {
+    background: @submap-move;
+}
+#submap.resize {
+    background: @submap-resize;
+}
 #workspaces button.active {
-  color: @color-green;
+    background: @workspace-active;
 }
-
 #workspaces button.empty {
-  font-weight: normal;
-  color: @color-bg3; 
+    background: @workspace-empty;
+}
+#workspaces button.urgent {
+    background: @workspace-urgent;
 }
 
-#workspaces button.urgent{
-  background-color: @color-red;
-}
-
-#window{
-  padding: 0 0.5em;
-  background-color: alpha(@color-bg, 0.6);
-  min-width: 100px;
-  border-style: none;
-  transition: 1s;
-}
-
-/*-----------------------*/
-/*--- general Modules ---*/
-/*-----------------------*/
 #tray {
-  border-color: @color-gray;
+    background: none
+}
+#custom-left.tray {
+    color: @pulseaudio
 }
 
-#pulseaudio{ 
-  border-color: @color-purple; 
-} 
-
-#clock {
-  border-color: @color-blue;
+#pulseaudio {
+    background: @pulseaudio
 }
-
-#cpu {
-  border-color: @color-purple;
-}
-
-#custom-gpu {
-  border-color: @color-yellow;
-}
-
-#memory {
-  border-color: @color-aqua;
+#custom-left-inverse.pulseaudio {
+    color: @pulseaudio;
+    background: @mpris;
 }
 
 #mpris {
-  padding: 0 0.5em;
-  border-color: @color-aqua;
+    background: @mpris;
+}
+#custom-left-inverse.mpris {
+    color: @mpris;
+    background: @cpu;
 }
 
-#custom-caps {
-  padding: 0 0.5em;
-  background-color: @color-purple;
-  border-style: none;
+#cpu {
+    background: @cpu;
+}
+#custom-left-inverse.perf {
+    color: @cpu;
+    background: @perf;
+}
+#memory {
+    background: @perf;
+}
+#custom-gpu {
+    background: @perf;
+}
+#custom-left.perf {
+    color: @cpu;
+    background: @perf;
+}
+#custom-left-inverse.cpu {
+    color: @cpu;
+    background: @clock;
+}
+
+#clock {
+    background: @clock;
+}
+
+/*------------*/
+/*- DIVIDERS -*/
+/*------------*/
+#custom-left,
+#custom-right,
+#custom-left-inverse,
+#custom-right-inverse {
+	font-size: 20px;
+    background: none;
+    margin: 0px;
+    padding: 0px;
+    color: @background;
 }
 

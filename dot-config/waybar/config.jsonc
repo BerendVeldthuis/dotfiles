@@ -1,127 +1,106 @@
-[{
-  /////////////////////////
-  // Main monitor (DP-2) //
-  /////////////////////////
-  "layer":"top",
-  "position":"top",
-  "height":"24",
-  "spacing":"4",
-  "output":"DP-2",
-  "include": [
-    "~/.config/waybar/shared-config.jsonc"
-  ],
-
-  ///////////////////////
-  //// Module layout ////
-  ///////////////////////
-  "modules-left": [
-    "custom/caps",
-    "hyprland/submap",
-    "hyprland/workspaces"
-  ],
-  "modules-center": [
-    "hyprland/window"
-  ],
-  "modules-right": [
-    "tray",
-    "pulseaudio",
-    "mpris",
-    "clock"
-  ],
-  ///////////////////////
-  //// Module config ////
-  ///////////////////////
-  "tray":{
-    "icon-size": 18,
-    "spacing": 2
-  },
-  "pulseaudio": {
-    "format": "{icon}{volume}󱉸",
-    "format-muted": "󰝟",
-    "format-icons": {
-      "default": ["󰖀", "󰕾"]
-    },
-    "on-click": "wpctl set-mute @DEFAULT_SINK@ toggle"
-  },
-  "mpris": {
-    "interval": 1,
-    "format": "{player_icon}",
-    "format-paused": "{status_icon}",
-    "player-icons": {
-      "default": "󰐊",
-      "vlc": "󰕼"
-    },
-    "status-icons": {
-      "paused": "󰏤",
-      "stopped": "󰐊"
-    },
-    "tooltip-format": "{title}\n{length}󰿟{position}"
-  },
-  "clock": {
-    "format": "{:%Y-%m-%d %H:%M:%S}",
-    "tooltip": false,
-    "interval": 1,
-    "on-click": "date '+%Y-%m-%d %H:%M:%S' | wl-copy" 
-  }
-}, 
-
+//"format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"]
+//"format-icons": ["⣀", "⣄", "⣤", "⣦", "⣶", "⣷", "⣿"]
 {
-    //////////////////////////////////
-    // Secondaiy monitor (HDMI-A-1) //
-    //////////////////////////////////
-    "layer":"top",
-    "position":"top",
-    "height":"24",
-    "spacing":"4",
-    "output":"HDMI-A-1",
+    "postition": "top",
+    "height": 24,
+    "spacing": 0,
+    "fixed-center": true,
     "include": [
-      "~/.config/waybar/shared-config.jsonc"
+        "~/.config/waybar/dividers.jsonc"
     ],
-
-  ///////////////////////
-  //// Module layout ////
-  ///////////////////////
-  "modules-left": [
-    "clock",
-    "cpu",
-    "memory",
-    "custom/gpu"
-  ],
-  "modules-center": [
-    "hyprland/window"
-  ],
-  "modules-right": [
-    "hyprland/workspaces",
-    "hyprland/submap",
-    "custom/caps"
-  ],
-
-  ///////////////////////
-  //// Module config ////
-  ///////////////////////
-  "clock": {
-    "format": "{:%H:%M}",
-    "tooltip": true,
-    "tooltip-format": "{:%Y-%m-%d %H:%M:%S}",
-    "on-click": "date '+%Y-%m-%d %H:%M:%S' | wl-copy",
-    "interval": 1 
-  },
-  "cpu": {
-    "interval": 5,
-    "format": "󰻠{usage}󱉸",
-    "on-click": "alacritty -e btop -p 1"
-  },
-  "custom/gpu": {
-    "exec": "/home/qbyte/.config/waybar/scripts/custom-gpu.sh",
-    "return-type": "json",
-    "format": "{}",
-    "interval": 5,
-    "tooltip": true,
-    "on-click": "alacritty -e nvtop"
-  },
-  "memory": {
-    "format": "󰍛{percentage}󱉸",
-    "tooltip-format": "{used:0.1f}󰿟{total:0.1f}GiB",
-    "on-click": "alacritty -e btop -p 2"
-  }
-}]
+    "modules-left": [
+        "custom/caps",
+        "hyprland/submap",
+        "hyprland/workspaces",
+        "custom/right",
+        "hyprland/window"
+    ],
+    "modules-center": [],
+    "modules-right": [
+        "tray",
+        "custom/left#tray",
+        "pulseaudio",
+        "custom/left-inverse#pulseaudio",
+        "mpris",
+        "custom/left-inverse#mpris",
+        "group/perf",
+        "custom/left-inverse#cpu",
+        "clock"
+    ],
+    //////////////////////
+    /// MODULE CONFIGS ///
+    //////////////////////
+    "group/perf": {
+        "orientation": "horizontal",
+        "drawer": {},
+        "modules": [
+            "cpu",
+            "custom/left-inverse#perf",
+            "memory",
+            "custom/gpu",
+            "custom/left#perf"
+        ]
+    },
+    "cpu": {
+        "format": "󰻠{usage}󱉸"
+    },
+    "memory": {
+        "format": "󰍛{percentage}󱉸",
+        "tooltip-format": "{used:0.1f}󰿟{total:0.1f}GiB",
+        "on-click": "alacritty -e btop -p 2"
+    },
+    "custom/gpu": {
+        "exec": "~/.config/waybar/scripts/custom-gpu.sh",
+        "return-type": "json",
+        "format": "{}",
+        "interval": 5,
+        "tooltip": true
+    },
+    "custom/caps": {
+        "exec": "~/.config/waybar/scripts/capslock.sh",
+        "tooltip": false,
+        "interval": 1
+    },
+    "tray":{
+        "icon-size": 18,
+        "spacing": 2
+    },
+    "hyprland/workspaces": {
+        "all-outputs": true,
+        "format": "{icon}",
+        "format-icons": {
+           "tray": "󱊖",
+           "audio": "󰤽" 
+        }
+    },
+    "mpris": {
+        "interval": 1,
+        "format": "{player_icon} {status_icon}",
+        "player-icons": {
+            "default": "󰧔",
+            "vlc": "󰕼",
+            "firefox": "󰈹"
+        },
+        "status-icons": {
+            "playing": "󰐊",
+            "paused": "󰏤",
+            "stopped": "󰓛"
+        },
+        "tooltip-format": "{player} — {dynamic}"
+    },
+    "pulseaudio": {
+        "format": "{icon}{volume}󱉸",
+        "format-muted": "󰝟",
+        "format-icons": {
+            "default": ["󰖀", "󰕾"]
+        },
+        "on-click": "wpctl set-mute @DEFAULT_SINK@ toggle"
+    },
+    "clock": {
+        "format": "{:%H:%M}",
+        "tooltip-format": "{:%Y-%m-%d %H:%M:%S}",
+        "on-click": "date '+%Y-%m-%d' | wl-copy",
+        "on-click-right": "date '+%Y-%m-%d %H:%M:%S' | wl-copy",
+        "interval": 1
+    }
+}
