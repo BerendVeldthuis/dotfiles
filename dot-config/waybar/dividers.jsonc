@@ -1,0 +1,12 @@
+{
+    "custom/right": {"format": "", "tooltip": false},
+    "custom/left": {"format": "", "tooltip": false},
+    "custom/left#perf": {"format": "", "tooltip": false},
+    "custom/left#tray": {"format": "", "tooltip": false},
+    "custom/right-inverse": {"format": "", "tooltip": false},
+    "custom/left-inverse": {"format": "", "tooltip": false},
+    "custom/left-inverse#pulseaudio": {"format": "", "tooltip": false},
+    "custom/left-inverse#mpris": {"format": "", "tooltip": false},
+    "custom/left-inverse#cpu": {"format": "", "tooltip": false},
+    "custom/left-inverse#perf": {"format": "", "tooltip": false},
+}
