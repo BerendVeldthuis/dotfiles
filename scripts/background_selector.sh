@@ -8,7 +8,7 @@ backgrounds=(~/Pictures/background/*)
 selected_bg=$(echo -e ${(j[\n])backgrounds} | rofi -dmenu)
 
 # hyprpaper and hyprlock both look for this "background"
-cp $selected_bg ~/.config/hypr/wall.png
+cp $selected_bg $HOME/.config/hypr/wall.png
 
-hyprctl hyprpaper wallpaper "eDP-1, ~/.config/hypr/wall.png, cover"
+hyprctl hyprpaper wallpaper ", $HOME/.config/hypr/wall.png, cover"
 
