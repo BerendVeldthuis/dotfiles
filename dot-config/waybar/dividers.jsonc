@@ -1,0 +1,14 @@
+{
+    "custom/right": {"format": "", "tooltip": false},
+    "custom/left": {"format": "", "tooltip": false},
+    "custom/left#perf": {"format": "", "tooltip": false},
+    "custom/left#tray": {"format": "", "tooltip": false},
+    "custom/right-inverse": {"format": "", "tooltip": false},
+    "custom/right-inverse#windowcount": {"format": "", "tooltip": false},
+    "custom/left-inverse": {"format": "", "tooltip": false},
+    "custom/left-inverse#tray": {"format": "", "tooltip": false},
+    "custom/left-inverse#audio": {"format": "", "tooltip": false},
+    "custom/left-inverse#rf": {"format": "", "tooltip": false},
+    "custom/left-inverse#power": {"format": "", "tooltip": false},
+    "custom/left-inverse#backlight": {"format": "", "tooltip": false},
+}
