@@ -27,14 +27,6 @@ hl.monitor({
   scale = "1",
 })
 
----------------------
----- MY PROGRAMS ----
----------------------
-local terminal    = "alacritty"
-local fileManager = "dolphin"
-local menu        = "rofi"
-
-
 -------------------
 ---- AUTOSTART ----
 -------------------
@@ -65,7 +57,7 @@ hl.env("QT_QPA_PLATFORMTHEME", "qt6ct")
 -----------------------
 
 local css_gaps = function(top, left, right, bottom) -- Simple utility function
-    return {top = top, left = left, right = right, bottom = bottom} 
+    return {top = top, left = left, right = right, bottom = bottom}
 end
 
 -- Refer to https://wiki.hypr.land/Configuring/Basics/Variables/
@@ -106,7 +98,7 @@ hl.config({
 
     blur = {
       enabled   = true,
-      size      = 3,
+      size      = 5,
       passes    = 1,
       vibrancy  = 0.1696,
     },
@@ -232,13 +224,11 @@ hl.config({
   },
 })
 
---------------------------------
----- WINDOWS AND WORKSPACES ----
---------------------------------
+---------------
+---- RULES ----
+---------------
 -- See https://wiki.hypr.land/Configuring/Basics/Window-Rules/
 -- and https://wiki.hypr.land/Configuring/Basics/Workspace-Rules/
-
--- Example window rules that are useful
 
 local suppressMaximizeRule = hl.window_rule({
   -- Ignore maximize requests from all apps. You'll probably like this.
@@ -247,7 +237,21 @@ local suppressMaximizeRule = hl.window_rule({
 
   suppress_event = "maximize",
 })
--- suppressMaximizeRule:set_enabled(false)
+suppressMaximizeRule:set_enabled(true)
+
+local workspace_init = function(id, name, layout)
+  --- This func is used to set the name and layout of specifiyed workspace
+  name = name or ""
+  layout = layout or ""
+  hl.workspace_rule({
+    workspace = id,
+    default_name = name,
+    layout = layout,
+  })
+end
+
+workspace_init("7", "tray")
+workspace_init("8", "audio")
 
 hl.window_rule({
   -- Fix some dragging issues with XWayland
@@ -274,21 +278,10 @@ hl.window_rule({
 })
 
 --- System tray ---
-hl.workspace_rule({
-  workspace = "7",
-  layout = "dwindle",
-})
 hl.window_rule({
-  name = "steam",
+  name = "KeepassXC",
   match = {
-    initial_title = "Steam Games List"
-  },
-  workspace = "7 silent",
-})
-hl.window_rule({
-  name = "Distord",
-  match = {
-    class = "discord"
+    class = "org.keepassxc.KeePassXC"
   },
   workspace = "7 silent",
 })
@@ -328,3 +321,10 @@ hl.window_rule({
   border_size = 5,
 })
 
+hl.layer_rule({
+    name = "Waybar",
+    match = {
+        namespace = "waybar",
+    },
+    blur = true,
+})
