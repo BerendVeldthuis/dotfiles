@@ -1,0 +1,24 @@
+$HOME/.cache
+$HOME/.ccache
+$HOME/.config/*/Cache
+$HOME/.config/*/Code Cache
+$HOME/.gvfs
+$HOME/.Private
+$HOME/.steam/root
+$HOME/.var/app/*/cache
+$HOME/.var/app/*/config/Cache
+$HOME/.var/app/*/config/Code Cache
+$HOME/.var/app/com.valvesoftware.Steam/.steam/root
+$HOME/snap/*/*/.cache
+$HOME/snap/*/*/.config/Cache
+$HOME/snap/*/*/.config/Code Cache
+/dev
+/proc
+/run
+/sys
+/tmp
+
+$HOME/Downloads
+$HOME/Applications
+$HOME/.cache
+$HOME/.local/share/Trash
