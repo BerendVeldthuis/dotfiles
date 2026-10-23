@@ -9,6 +9,7 @@
     "custom/left-inverse#tray": {"format": "", "tooltip": false},
     "custom/left-inverse#audio": {"format": "", "tooltip": false},
     "custom/left-inverse#rf": {"format": "", "tooltip": false},
+    "custom/left-inverse#battery": {"format": "", "tooltip": false},
     "custom/left-inverse#power": {"format": "", "tooltip": false},
     "custom/left-inverse#backlight": {"format": "", "tooltip": false},
 }

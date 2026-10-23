@@ -28,6 +28,7 @@
         "network",
         "custom/left-inverse#rf",
         "battery",
+        "custom/left-inverse#battery",
         "power-profiles-daemon",
         "custom/left-inverse#power",
         "backlight",

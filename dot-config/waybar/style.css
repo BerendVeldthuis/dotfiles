@@ -15,7 +15,8 @@
 
 @define-color audio #458588;                    /* blue */
 @define-color rf #b16286;                       /* purple */
-@define-color power #98971a;                    /* green */
+@define-color battery #98971a;                    /* green */
+@define-color power #b8bb26;                    /* green */
 @define-color backlight #d79921;                /* yellow */
 @define-color clock #a89984;                    /* gray */
 
@@ -108,10 +109,15 @@ tooltip {
 #network{background: @rf}
 #custom-left-inverse.rf {
     color: @rf;
+    background: @battery;
+}
+
+#battery{background: @battery}
+#custom-left-inverse.battery {
+    color: @battery;
     background: @power;
 }
 
-#battery{background: @power}
 #battery.warning{background: #cc241d;}
 #power-profiles-daemon{background: @power}
 #custom-left-inverse.power{
