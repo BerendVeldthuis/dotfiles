@@ -170,7 +170,7 @@ hl.config({
 hl.config({
   scrolling = {
     fullscreen_on_one_column = false,
-    focus_fit_method = 1,
+    focus_fit_method = 1, --centering
   },
 })
 
