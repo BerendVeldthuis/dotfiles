@@ -40,9 +40,9 @@ hl.on("hyprland.start", function ()
     hl.exec_cmd("XDG_MENU_PREFIX=arch- kbuildsycoca6")
     hl.exec_cmd("com.github.wwmm.easyeffects")
     hl.exec_cmd("com.discordapp.Discord")
-    hl.exec_cmd("steam")
+    hl.exec_cmd("steam -pipewire")
     hl.exec_cmd("zen-browser")
-    hl.exec_cmd("mount /media/qbyte/smb")
+    hl.exec_cmd("bash ~/.config/hypr/startup.sh")
 end)
 
 -------------------------------
@@ -78,7 +78,6 @@ hl.config({
 
   decoration = {
     rounding       = 0,
-    rounding_power = 0,
 
     active_opacity   = 1.0,
     inactive_opacity = 1.0,

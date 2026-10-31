@@ -57,6 +57,7 @@ hl.window_rule({
     class = "discord"
   },
   workspace = "7 silent",
+  scrolling_width = 0.75,
 })
 hl.window_rule({
   name = "sound",
@@ -142,6 +143,7 @@ hl.layer_rule({
   name = "waybar",
   match = { namespace = "waybar" },
   blur = false,
+  xray = true,
 })
 hl.layer_rule({
   name = "vicinae",
