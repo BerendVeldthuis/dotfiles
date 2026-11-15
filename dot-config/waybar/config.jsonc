@@ -17,30 +17,23 @@
     ],
     "modules-center": [],
     "modules-right": [
+        "custom/left#begin",
         "tray",
-        "custom/left#tray",
+        "custom/left-inverse#tray",
         "pulseaudio",
         "custom/left-inverse#pulseaudio",
         "mpris",
         "custom/left-inverse#mpris",
-        "group/perf",
+        "cpu",
         "custom/left-inverse#cpu",
+        "memory",
+        "custom/gpu",
+        "custom/left-inverse#perf",
         "clock"
     ],
     //////////////////////
     /// MODULE CONFIGS ///
     //////////////////////
-    "group/perf": {
-        "orientation": "horizontal",
-        "drawer": {},
-        "modules": [
-            "cpu",
-            "custom/left-inverse#perf",
-            "memory",
-            "custom/gpu",
-            "custom/left#perf"
-        ]
-    },
     "cpu": {
         "format": "󰻠{usage}󱉸"
     },
