@@ -26,7 +26,6 @@ hl.monitor({
   position = "auto-up",
   scale = "1",
 })
-
 -------------------
 ---- AUTOSTART ----
 -------------------
@@ -41,7 +40,9 @@ hl.on("hyprland.start", function ()
   hl.exec_cmd("XDG_MENU_PREFIX=arch- kbuildsycoca6")
   --hl.exec_cmd("mount /media/qbyte/smb/")
   hl.exec_cmd("com.github.wwmm.easyeffects", { workspace = 8})
+  hl.exec_cmd("keepassxc", { workspace = 7 })
   hl.exec_cmd("zen-browser", { workspace = "1" })
+  hl.exec_cmd("sleep 2 && hyprctl dispatch 'hl.dsp.focus({workspace = 1, on_current_monitor = true})'")
 end)
 
 -------------------------------
@@ -79,11 +80,15 @@ hl.config({
     allow_tearing = false,
 
     layout = "scrolling",
+    snap = {
+        enabled = true,
+        window_gap = 10,
+        monitor_gap = 10,
+    },
   },
 
   decoration = {
     rounding       = 0,
-    rounding_power = 0,
 
     -- Change transparency of focused and unfocused windows
     active_opacity   = 1.0,
@@ -170,7 +175,7 @@ hl.config({
 hl.config({
   scrolling = {
     fullscreen_on_one_column = false,
-    focus_fit_method = 1, --centering
+    focus_fit_method = 1,
   },
 })
 
@@ -250,8 +255,8 @@ local workspace_init = function(id, name, layout)
   })
 end
 
-workspace_init("7", "tray")
-workspace_init("8", "audio")
+workspace_init("7", "tray", "scrolling")
+workspace_init("8", "audio", "scrolling")
 
 hl.window_rule({
   -- Fix some dragging issues with XWayland
@@ -275,15 +280,6 @@ hl.window_rule({
   },
   float = true,
   center = true,
-})
-
---- System tray ---
-hl.window_rule({
-  name = "KeepassXC",
-  match = {
-    class = "org.keepassxc.KeePassXC"
-  },
-  workspace = "7 silent",
 })
 
 hl.window_rule({
