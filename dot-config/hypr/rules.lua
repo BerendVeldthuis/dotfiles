@@ -36,12 +36,12 @@ hl.window_rule({
   center = true,
 })
 
-hl.window_rule({
-  name = "keepass",
-  match = {class = "org.keepassxc.KeePassXC"},
-  float = true,
-  size = {600, 600},
-})
+--hl.window_rule({
+--  name = "keepass",
+--  match = {class = "org.keepassxc.KeePassXC"},
+--  float = true,
+--  size = {600, 600},
+--})
 
 --- System tray ---
 hl.window_rule({

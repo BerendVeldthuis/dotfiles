@@ -9,6 +9,14 @@
 -- Create your files separately and then require them like this:
 -- require("myColors")
 
+--hl.on("workspace.active", function(ws)
+--  hl.notification.create({
+--    text = "Aspect ratio = " .. (ws.monitor.width/ ws.monitor.height) .. ":1",
+--    timeout = 2000,
+--    icon = "ok"
+--  })
+--end)
+
 ------------------
 ---- MONITORS ----
 ------------------
@@ -38,11 +46,13 @@ hl.on("hyprland.start", function ()
     hl.exec_cmd("wl-paste --type text --watch cliphist store")
     hl.exec_cmd("wl-paste --type image --watch cliphist store")
     hl.exec_cmd("XDG_MENU_PREFIX=arch- kbuildsycoca6")
+    hl.exec_cmd("keepassxc", {workspace = 8})
     hl.exec_cmd("com.github.wwmm.easyeffects")
     hl.exec_cmd("com.discordapp.Discord")
     hl.exec_cmd("steam -pipewire")
     hl.exec_cmd("zen-browser")
     hl.exec_cmd("bash ~/.config/hypr/startup.sh")
+    hl.exec_cmd("sleep 2 && hyprctl dispatch 'hl.dsp.focus({workspace = 1, on_current_monitor = true})'")
 end)
 
 -------------------------------

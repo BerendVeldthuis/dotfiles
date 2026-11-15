@@ -2,7 +2,6 @@
 --- Hypr Keybinds ---
 ---------------------
 
---- Functions ---
 -- Helper to have per layout keybinds
 local function layout_bind(bind_table)
   return function ()
@@ -19,17 +18,53 @@ local function layout_bind(bind_table)
   end
 end
 
+-- Function that changes focus keeping grouped windows in mind.
+local function smart_focus(dir_name)
+    return function ()
+        local window = hl.get_active_window()
+        if not window then
+            return
+        end
+        -- No group involved move focus normally
+        if window.group == nil then
+            hl.dispatch(hl.dsp.focus({direction = dir_name}))
+            return
+        else
+            -- If the focus is at the edge of an group and focus is shifted out
+            -- the edge, move the window focus.
+            if window.group.current_index == window.group.size and dir_name == "right" then
+                hl.dispatch(hl.dsp.focus({direction = dir_name}))
+                return
+            end
+
+            if window.group.current_index == 1 and dir_name == "left" then
+                hl.dispatch(hl.dsp.focus({direction = dir_name}))
+                return
+            end
+
+            -- otherwise switch the tabs in the group.
+            if dir_name == "left" then
+                hl.dispatch(hl.dsp.group.prev())
+            elseif dir_name == "right" then
+                hl.dispatch(hl.dsp.group.next())
+            end
+        end
+    end
+end
+
 ------------
 --- Keys ---
 ------------
 --- Navigation and Window management ---
-hl.bind("SUPER + H", hl.dsp.focus({ direction = "left" }))
-hl.bind("SUPER + J", hl.dsp.focus({ direction = "down" }))
-hl.bind("SUPER + K", hl.dsp.focus({ direction = "up" }))
-hl.bind("SUPER + L", hl.dsp.focus({ direction = "right" }))
+hl.bind("SUPER + H", smart_focus("left"))
+hl.bind("SHIFT + SUPER + H", hl.dsp.focus({direction = "left"})) --override smart_focus()
+hl.bind("SUPER + J", hl.dsp.focus({ direction = "down"  }))
+hl.bind("SUPER + K", hl.dsp.focus({ direction = "up"    }))
+hl.bind("SUPER + L", smart_focus("right"))
+hl.bind("SHIFT + SUPER + L", hl.dsp.focus({direction = "right"}))
 
 hl.bind("SUPER + G", hl.dsp.group.toggle())
-hl.bind("SUPER + M", hl.dsp.group.next())
+hl.bind("SUPER + M", hl.dsp.group.next()) -- Override for smart_focus()
 hl.bind("SUPER + N", hl.dsp.group.prev())
 
 hl.bind("escape", hl.dsp.submap("reset"), {submap_universal = true, non_consuming = true})
@@ -45,6 +80,8 @@ hl.define_submap("move", function()
     dwindle = hl.dsp.window.move({direction = "r", group_aware = true}),
     scrolling = hl.dsp.layout("consume_or_expel next"),
   }), {repeating = true})
+  hl.bind("SHIFT + SUPER + H", hl.dsp.layout("swapcol l"))
+  hl.bind("SHIFT + SUPER + L", hl.dsp.layout("swapcol r"))
   hl.bind("SUPER + J", hl.dsp.window.move({ direction = "d", group_aware = true }))
   hl.bind("SUPER + K", hl.dsp.window.move({ direction = "u", group_aware = true }))
 end)
